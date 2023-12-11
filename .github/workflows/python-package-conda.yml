@@ -1,0 +1,16 @@
+name: LambdaTest Tunnel Workflow
+on: [push]
+jobs:
+  lambdatest-tunnel:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v2
+    - name: Set up Docker Environment
+      run: |
+        docker pull lambdatest/tunnel
+        sleep 15
+        
+    - name: start
+      run: |
+        docker run --name lambdatest-tunnel -e LT_USERNAME='ritamg' -e LT_ACCESS_KEY='TK7DCf2rFcBJzT3IHz4kD47lThhsHckrlGtiGkYyetAcixtrj5' lambdatest/tunnel:latest
